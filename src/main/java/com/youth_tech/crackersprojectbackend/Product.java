@@ -19,8 +19,8 @@ public class Product {
     @Column(name = "rate_per", nullable = false, length = 255)
     private String ratePer;
 
-    @Column(name = "net_rate", nullable = false, precision = 10, scale = 2)
-    private BigDecimal netRate;
+    @Column(name = "net_rate", nullable = false)
+    private Double netRate;
 
 	public Integer getId() {
 		return id;
@@ -54,11 +54,11 @@ public class Product {
 		this.ratePer = ratePer;
 	}
 
-	public BigDecimal getNetRate() {
+	public Double getNetRate() {
 		return netRate;
 	}
 
-	public void setNetRate(BigDecimal netRate) {
+	public void setNetRate(Double netRate) {
 		this.netRate = netRate;
 	} 
 }
