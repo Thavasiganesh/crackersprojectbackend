@@ -1,6 +1,4 @@
-package com.youth_tech.crackersprojectbackend;
-
-import java.math.BigDecimal;
+package com.youth_tech.crackersprojectbackend.products;
 
 import jakarta.persistence.*;
 @Entity
@@ -21,6 +19,9 @@ public class Product {
 
     @Column(name = "net_rate", nullable = false)
     private Double netRate;
+    
+    @Column(name="product_type",nullable=false)
+    private String productType;
 
 	public Integer getId() {
 		return id;
@@ -60,5 +61,13 @@ public class Product {
 
 	public void setNetRate(Double netRate) {
 		this.netRate = netRate;
+	}
+
+	public String getProductType() {
+		return productType;
+	}
+
+	public void setProductType(String productType) {
+		this.productType = productType;
 	} 
 }

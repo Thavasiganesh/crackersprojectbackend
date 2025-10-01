@@ -1,4 +1,4 @@
-package com.youth_tech.crackersprojectbackend;
+package com.youth_tech.crackersprojectbackend.products;
 
 import java.util.List;
 
@@ -17,6 +17,6 @@ public class ProductService {
     }
 
     public List<Product> getProductsByCategory(String category) {
-        return productRepository.findByProductCategoryIgnoreCase(category);
+        return productRepository.findByProductType(category);
     }
 }
