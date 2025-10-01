@@ -23,7 +23,10 @@ public class ProductController {
             return productService.getAllProducts();
         } else {
         	String[] arr=category.split("-");
-        	category=arr[0]+" "+arr[1];
+        	if(!category.equals("combos"))
+        			category=arr[0]+" "+arr[1];
+        	else
+        		category=arr[0];
             return productService.getProductsByCategory(category);
         }
     }
