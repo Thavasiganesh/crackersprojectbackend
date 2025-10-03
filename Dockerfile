@@ -1,17 +1,22 @@
-# Use a lightweight JDK image
+# ---- Build Stage ----
 FROM eclipse-temurin:17-jdk-jammy as builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy Maven/Gradle wrapper files and build files first for caching
+# Copy Maven wrapper and pom first
 COPY mvnw pom.xml ./
+COPY .mvn .mvn
+
+# Ensure mvnw is executable
+RUN chmod +x mvnw
+
+# Copy source code
 COPY src src
 
-# Build the app (skip tests for faster build in container)
+# Build the application (skip tests for speed)
 RUN ./mvnw package -DskipTests
 
-# ---- Runtime Image ----
+# ---- Runtime Stage ----
 FROM eclipse-temurin:17-jre-jammy
 
 WORKDIR /app
@@ -19,7 +24,7 @@ WORKDIR /app
 # Copy the built JAR from the builder stage
 COPY --from=builder /app/target/*.jar app.jar
 
-# Expose port (Render expects this)
+# Expose port (Render default)
 EXPOSE 8080
 
 # Run the application
