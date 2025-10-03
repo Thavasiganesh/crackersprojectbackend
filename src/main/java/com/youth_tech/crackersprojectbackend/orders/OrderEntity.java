@@ -13,7 +13,7 @@ public class OrderEntity {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
     
-    private Long productId;
+    private Integer productId;
     
     @Column(nullable = false)
     private String productName;
@@ -22,7 +22,7 @@ public class OrderEntity {
     private Integer quantity;
     
     @Column(nullable = false)
-    private Double price;
+    private Float price;
 
 	public Long getId() {
 		return id;
@@ -40,11 +40,11 @@ public class OrderEntity {
 		this.order = order;
 	}
 
-	public Long getProductId() {
+	public Integer getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Long productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 
@@ -64,11 +64,11 @@ public class OrderEntity {
 		this.quantity = quantity;
 	}
 
-	public Double getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 }
