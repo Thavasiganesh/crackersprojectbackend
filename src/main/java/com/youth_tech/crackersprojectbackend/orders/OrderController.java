@@ -24,12 +24,15 @@ public class OrderController {
             OrderResponse orderResponse = orderService.createOrder(orderRequest);
             
             // Send automated thank you message via WhatsApp
-            
-            
             return ResponseEntity.ok(orderResponse);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
+	
+	@GetMapping("/dummy")
+	public String dummyMethod() {
+		return "Service UP Time increased";
+	}
 	
 }
