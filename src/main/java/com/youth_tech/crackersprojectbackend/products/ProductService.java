@@ -21,13 +21,15 @@ public class ProductService {
         if(category.equalsIgnoreCase("ground crackers")) {
 	        for(int i=0;i<items.size();i++) {
 	        	Product p=items.get(i);
-	        	p.setProductCategory("Ground Crackers");
+	        	if(p.getProductType().equalsIgnoreCase("Ground Crackers, New Varieties"))
+	        		p.setProductType("Ground Crackers");
 	        }
         }
         if(category.equalsIgnoreCase("New Varieties")) {
         	for(int i=0;i<items.size();i++) {
 	        	Product p=items.get(i);
-	        	p.setProductCategory("New Varieties");
+	        	if(p.getProductType().equalsIgnoreCase("Ground Crackers, New Varieties"))
+	        		p.setProductType("New Varieties");
 	        }
         }
         return items;
