@@ -17,6 +17,19 @@ public class ProductService {
     }
 
     public List<Product> getProductsByCategory(String category) {
-        return productRepository.findByProductType(category);
+        List<Product> items= productRepository.findByProductType(category);
+        if(category.equalsIgnoreCase("ground crackers")) {
+	        for(int i=0;i<items.size();i++) {
+	        	Product p=items.get(i);
+	        	p.setProductCategory("Ground Crackers");
+	        }
+        }
+        if(category.equalsIgnoreCase("New Varieties")) {
+        	for(int i=0;i<items.size();i++) {
+	        	Product p=items.get(i);
+	        	p.setProductCategory("New Varieties");
+	        }
+        }
+        return items;
     }
 }
