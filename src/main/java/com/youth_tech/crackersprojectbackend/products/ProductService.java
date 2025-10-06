@@ -13,7 +13,13 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        List<Product> items=productRepository.findAll();
+        for(Product p:items) {
+        	if(p.getProductType().equalsIgnoreCase("Ground Crackers, New Varieties")) {
+        		p.setProductType("Ground Crackers");
+        	}
+        }
+        return items;
     }
 
     public List<Product> getProductsByCategory(String category) {
