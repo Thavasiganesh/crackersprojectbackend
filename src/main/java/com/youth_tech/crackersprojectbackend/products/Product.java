@@ -22,6 +22,9 @@ public class Product {
     
     @Column(name="product_type",nullable=false)
     private String productType;
+    
+    @Column(name="is_deleted")
+    private Boolean isDeleted;
 
 	public Integer getId() {
 		return id;
@@ -69,5 +72,13 @@ public class Product {
 
 	public void setProductType(String productType) {
 		this.productType = productType;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	} 
 }

@@ -11,6 +11,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 //	List<Product> findByProductCategoryIgnoreCase(String category);
 
-	@Query("SELECT p FROM Product p WHERE LOWER(p.productType) LIKE LOWER(CONCAT('%', :type, '%'))")
+	@Query("SELECT p FROM Product p WHERE LOWER(p.productType) LIKE LOWER(CONCAT('%', :type, '%')) AND p.isDeleted=false")
 	List<Product> findByProductType(@Param("type") String type);
+
+	@Query("SELECT p FROM Product p WHERE p.isDeleted=false")
+	List<Product> findAllAndNotDeleted();
 }
